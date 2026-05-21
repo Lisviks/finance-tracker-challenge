@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Personal dashboard</p>
+          <h1>Finance Tracker</h1>
+        </div>
+        <div class="month-control" aria-label="Current month">
+          <span id="current-month">May</span>
+          <strong id="current-year">2026</strong>
+        </div>
+      </header>
+
+      <section class="summary-grid" aria-label="Account summary">
+        <article class="summary-card balance-card">
+          <span>Total balance</span>
+          <strong id="balance-total">$0.00</strong>
+          <p id="balance-note">Ready to track</p>
+        </article>
+        <article class="summary-card">
+          <span>Income</span>
+          <strong id="income-total">$0.00</strong>
+          <p id="income-note">0 payments received</p>
+        </article>
+        <article class="summary-card">
+          <span>Expenses</span>
+          <strong id="expense-total">$0.00</strong>
+          <p id="expense-note">0% of monthly budget</p>
+        </article>
+        <article class="summary-card">
+          <span>Savings</span>
+          <strong id="savings-total">$0.00</strong>
+          <p id="savings-note">Income minus expenses</p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <section class="panel transaction-panel">
+          <div class="section-heading">
+            <h2>Add transaction</h2>
+            <p>Record income or spending.</p>
+          </div>
+
+          <form class="transaction-form" id="transaction-form">
+            <label>
+              Description
+              <input
+                type="text"
+                id="description"
+                placeholder="Groceries, salary, rent..."
+                required
+              />
+            </label>
+
+            <div class="form-row">
+              <label>
+                Amount
+                <input
+                  type="number"
+                  id="amount"
+                  placeholder="0.00"
+                  min="0.01"
+                  step="0.01"
+                  required
+                />
+              </label>
+              <label>
+                Type
+                <select id="type">
+                  <option value="expense">Expense</option>
+                  <option value="income">Income</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                Category
+                <select id="category"></select>
+              </label>
+              <label>
+                Date
+                <input type="date" id="date" required />
+              </label>
+            </div>
+
+            <button type="submit">Add transaction</button>
+          </form>
+        </section>
+
+        <section class="panel budget-panel">
+          <div class="section-heading">
+            <h2>Budget overview</h2>
+            <p>Monthly spending by category.</p>
+          </div>
+
+          <div class="budget-list">
+            <div class="budget-item" data-budget-category="Housing">
+              <div>
+                <span>Housing</span>
+                <strong>$0 / $1,500</strong>
+              </div>
+              <div class="progress-bar">
+                <span class="progress housing"></span>
+              </div>
+            </div>
+            <div class="budget-item" data-budget-category="Food">
+              <div>
+                <span>Food</span>
+                <strong>$0 / $650</strong>
+              </div>
+              <div class="progress-bar">
+                <span class="progress food"></span>
+              </div>
+            </div>
+            <div class="budget-item" data-budget-category="Transport">
+              <div>
+                <span>Transport</span>
+                <strong>$0 / $300</strong>
+              </div>
+              <div class="progress-bar">
+                <span class="progress transport"></span>
+              </div>
+            </div>
+            <div class="budget-item" data-budget-category="Entertainment">
+              <div>
+                <span>Entertainment</span>
+                <strong>$0 / $250</strong>
+              </div>
+              <div class="progress-bar">
+                <span class="progress entertainment"></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel transactions-table-panel">
+          <div class="section-heading table-heading">
+            <div>
+              <h2>Recent transactions</h2>
+              <p>Your latest account activity.</p>
+            </div>
+            <button type="button" class="secondary-button" id="toggle-view">
+              View all
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
