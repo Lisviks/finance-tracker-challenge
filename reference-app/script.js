@@ -4,6 +4,7 @@ const budgets = {
   Housing: 1500,
   Food: 650,
   Transport: 300,
+  Health: 400,
   Entertainment: 250,
 };
 
@@ -206,6 +207,7 @@ function getPillClass(transaction) {
     Housing: "housing-pill",
     Food: "food-pill",
     Transport: "transport-pill",
+    Health: "health-pill",
     Entertainment: "entertainment-pill",
   };
 
